@@ -1,0 +1,55 @@
+
+   
+        <!-- <h1>
+            Todo List / <%= title %>
+        </h1> -->
+       
+    
+  <form action="/create-todolist" method="post">
+        <div>
+        <label for="Description">Description: </label>
+        <input type="text " id="desc" name="Description"/>
+      </div>
+      <br>
+      <div>
+        <label for="DueDate">Due Date: </label>
+          <input id="due_date" type="date" name="DueDate" />
+          <i class="fas fa-calendar-alt"></i>
+        </div>
+           <br>
+        <div>
+          <label for="Category">Category:</label>
+          <select name="Category" id="category">
+            <option value="" selected disabled></option>
+            <option value="personal">personal</option>
+            <option value="work">work</option>
+            <option value="sport">sport</option>
+            <option value="home">home</option>
+          </select>
+        </div>
+        <br>
+        <button type="submit">Add Activity</button>
+  </form>
+  
+
+
+  <div  id="output">
+    <ul>
+        <% for(let i of Todo_List){ %>
+            <li class="contact">
+                <div class="details">
+                <p><%= i.Description %></p>
+                <p><%= i.DueDate %></p>
+                 <p><%= i.Category %></p>
+
+                </div>
+                <div class="delete-button">
+                    <a href="/delete-contact/?id=<%= i._id %>">
+                      <button type="submit">Delete Activity</button>
+                        <i class="fas fa-window-close"></i>
+                    </a>
+                </div>
+            </li>
+            <% } %>
+    </ul>
+</div>
